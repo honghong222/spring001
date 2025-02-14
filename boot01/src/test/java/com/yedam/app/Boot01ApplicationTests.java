@@ -3,6 +3,9 @@ package com.yedam.app;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -24,7 +27,7 @@ class Boot01ApplicationTests {
 	 * for(EmpVO emp : list) { System.out.println(emp); }
 	 * assertTrue(!list.isEmpty()); }
 	 */
-	@Test
+	//@Test
 	void infoTest() {
 		EmpVO empVO = new EmpVO();
 		empVO.setEmployeeId(100);
@@ -37,17 +40,53 @@ class Boot01ApplicationTests {
 		//두번쨰 매개변수 : 실제 값
 		// 두 개가 같으면 테스트 성공, 다르면 실패
 	}
-	@Test
-	void insertTest() {
+	//@Test
+	void insertTest() throws ParseException {
 		EmpVO empVO = new EmpVO();
-		empVO.setLastName("Kang");
-		empVO.setEmail("Kang@daum.net");
+		empVO.setLastName("ww");
+		empVO.setEmail("Kng@aum.net");
 		empVO.setJobId("SA_REP");
-		
+		/*
+		 * SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd"); Date date =
+		 * sdf.parse("240501");
+		 * 
+		 * empVO.setHireDate(date);
+		 */
 		int result = empMapper.insertEmpInfo(empVO);
 		
 		
 		assertEquals(1,result);
 
+	}
+	//@Test
+	void updateTest() {
+		//1)단건조회
+		EmpVO empVO = new EmpVO();
+		empVO.setEmployeeId(206);
+		
+		EmpVO findVO = empMapper.selectEmpInfo(empVO);
+		//2)수정할 데이터
+		findVO.setLastName("Han");
+		findVO.setJobId(null);
+		//3)수정
+		int result = empMapper.updateEmpInfo(findVO);
+		
+		assertEquals(1, result);
+	}
+	//@Test
+	void deleteEmpInfo() {
+		int result = empMapper.deleteEmpInfo(100);
+		assertEquals(1, result);
+	}
+	@Test
+	void selectKeyTest() {
+		EmpVO empVO = new EmpVO();
+		empVO.setLastName("Hong");
+		empVO.setEmail("Hong@google.com");
+		empVO.setLastName("IT_PROG");
+		// employeeId = null
+		int result = empMapper.insertEmpInfo(empVO);
+		System.out.println("==== " + empVO.getEmployeeId());
+		assertEquals(1,result);
 	}
 }
