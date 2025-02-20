@@ -10,4 +10,7 @@ public interface BoardMapper {
 	
 	//단건조회
 	public BoardVO selectInfo(BoardVO boardVO);
+	
+	//등록
+	public int insertInfo(BoardVO boardVO);
 }

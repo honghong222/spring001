@@ -30,5 +30,15 @@
     <!-- #{} : parameterType에 선언된 변수의 필드값 -->
     </select>
     
+    <!-- 등록 -->
+    <insert id="" parameterType="">
+    	<selectKey keyProperty=""
+    				resultType=""
+    				order="BEFORE">
+    			select NVL(MAX(bno), 1000) + 1
+    			from board
+    	</selectKey>
+    </insert>
+    
     
 </mapper>

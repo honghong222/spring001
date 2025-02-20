@@ -24,7 +24,10 @@
 			</thead>
 			<tbody>
 				<th:block th:each="post : ${boards}">
-					<tr>
+					<!-- /*post(BoardVO) => <tr/>*/-->
+					<!-- /*/boardInfo?bno=1*/-->
+					<tr th:id="${post.bno}"
+						th:onclick="|location.href='@{/boardInfo(bno=${post.bno})}'|">
 						<td>[[${post.bno}]]</td>
 						<td>[[${post.title}]]</td>
 						<td>[[${post.writer}]]</td>

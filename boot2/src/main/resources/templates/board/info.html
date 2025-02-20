@@ -13,32 +13,34 @@
 		<table class="table table-bordered">
 			<tr>
 				<th>번호</th>
-				<td></td>
+				<td>[[${board.bno}]]</td>
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td></td>
+				<td>[[${board.title}]]</td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td></td>
+				<td>[[${board.writer}]]</td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td></td>
+				<td>[[${board.contents}]]</td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td></td>
+				<!--  <td>[[${board.image}]]</td>-->
+				<!-- /image/cat.jpg -->
+				<td><img style="width:20%;" th:src='@{/images/{file}(file=${board.image})}'></td>
 			</tr>
 			<tr>
 				<th>작성일자</th>
-				<td></td>
+				<td>[[${#dates.format(board.regdate, "yyyy/MM/dd")}]]</td>
 			</tr>
 		</table>
 	</div>
 		<button type="button" class="btn btn-info">수정</button>
-		<button type="button" class="btn btn-secondary">목록</button>
+		<button type="button" class="btn btn-secondary" th:onclick="|location.href='@{/boardList}'|">목록</button>
 		<button type="button" class="btn btn-dark">삭제</button>
 </body>
 </html>
