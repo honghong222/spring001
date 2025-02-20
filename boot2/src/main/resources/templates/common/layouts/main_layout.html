@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<!--/* ~{파일경로(ViewResolver) :: fragment이름} */-->
+<!--  -->
+<th:block th:replace="~{common/configs/style_config :: Bootstrap5Config}"></th:block>
+</head>
+<body>
+	<!-- Header -->
+	<header th:insert="~{common/fragments/default_header :: HeaderFrag}"></header>
+	<!-- Content Page -->
+	<main>
+		<div layout:fragment="content"></div>
+	</main>
+</body>
+</html>
